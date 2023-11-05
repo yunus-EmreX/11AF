@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11AF Sınıfı Portalı</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .header {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    background: #23a6d5;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 20px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+
+  .close-btn {
+    float: right;
+    padding: 5px 10px;
+    background: #e73c7e;
+    color: #fff;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>11AF Sınıfı Portalı</h1>
+    <button class="button" onclick="togglePopup('classInfoPopup')">Sınıf Mevcudu</button>
+    <button class="button" onclick="togglePopup('examSchedulePopup')">Sınav Takvimi</button>
+    <button class="button" onclick="togglePopup('chatPopup')">Sınıf Chat</button>
+  </div>
+</div>
+
+<div id="classInfoPopup" class="popup">
+ <span class="close-btn" onclick="togglePopup('classInfoPopup')">&times;</span>
+ <h2>Sınıf Mevcudu</h2>
+ <ul>
+   <li>
+     <img src="defaul.jpeg" alt="Profil Fotoğrafı">
+     <span>Yunus Emre Yüksel</span>
+   </li>
+   <!-- Diğer öğrenciler için benzer öğeler ekleyin -->
+ </ul>
+</div>
+
+
+<div id="examSchedulePopup" class="popup">
+  <span class="close-btn" onclick="togglePopup('examSchedulePopup')">&times;</span>
+  <h2>Sınav Takvimi</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Sınav Adı</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>10 Kasım 2023</td>
+        <td>09:00</td>
+        <td>Matematik</td>
+      </tr>
+      <tr>
+        <td>12 Kasım 2023</td>
+        <td>14:30</td>
+        <td>Tarih</td>
+      </tr>
+      <tr>
+        <td>15 Kasım 2023</td>
+        <td>11:00</td>
+        <td>Fizik</td>
+      </tr>
+      <!-- Daha fazla sınavı buraya ekleyebilirsiniz -->
+    </tbody>
+  </table>
+</div>
+
+
+  <div id="chatPopup" class="popup">
+ <span class="close-btn" onclick="togglePopup('chatPopup')">&times;</span>
+ <h2>Sınıf Chat</h2>
+ <textarea id="chatInput" placeholder="Mesajınızı buraya yazın..."></textarea>
+ <button id="sendButton">Gönder</button>
+ <!-- Chat mesajları burada gösterilecek -->
+</div>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleOverlay()"></div>
+
+<script>
+function togglePopup(popupId) {
+  var popup = document.getElementById(popupId);
+  var overlay = document.getElementById('overlay');
+  popup.style.display = 'block';
+  overlay.style.display = 'block';
+}
+
+function toggleOverlay() {
+  var popups = document.getElementsByClassName('popup');
+  var overlay = document.getElementById('overlay');
+  for (var i = 0; i < popups.length; i++) {
+    popups[i].style.display = 'none';
+  }
+  overlay.style.display = 'none';
+}
+</script>
+
+</body>
+</html>
